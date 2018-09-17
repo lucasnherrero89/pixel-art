@@ -120,6 +120,8 @@ var nombreColores = [
   "DarkSlateGray",
   "Black"
 ];
+var paleta = document.getElementById("paleta");
+var grillaPixeles = document.getElementById("grilla-pixeles");
 
 // Variable para guardar el elemento 'color-personalizado'
 // Es decir, el que se elige con la rueda de color.
@@ -132,7 +134,6 @@ colorPersonalizado.addEventListener("change", function() {
 });
 
 var crearPaleta = function() {
-  var paleta = document.getElementById("paleta");
   for (var i = 0; i < nombreColores.length; i++) {
     var color = nombreColores[i];
     var nuevoDiv = document.createElement("div");
@@ -141,14 +142,28 @@ var crearPaleta = function() {
     paleta.appendChild(nuevoDiv);
   }
 };
+crearPaleta();
 
 var crearGrilla = function() {
-  var grillaPixeles = document.getElementById("grilla-pixeles");
   for (var i = 0; i < 1750; i++) {
     var pixel = document.createElement("div");
     grillaPixeles.appendChild(pixel);
   }
 };
-
-crearPaleta();
 crearGrilla();
+
+var cambiarColorElegido = function(e) {
+  var nuevoColor = e.target.style.backgroundColor;
+  var indicadorColor = document.getElementById("indicador-de-color");
+  indicadorColor.style.backgroundColor = nuevoColor;
+  console.log(nuevoColor);
+};
+
+var pintarGrilla = function(e) {
+  var colorSeleccionado = document.getElementById("indicador-de-color").style
+    .backgroundColor;
+  e.target.style.backgroundColor = colorSeleccionado;
+};
+
+paleta.addEventListener("click", cambiarColorElegido);
+grillaPixeles.addEventListener("click", pintarGrilla);

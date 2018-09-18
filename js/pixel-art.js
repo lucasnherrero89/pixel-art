@@ -120,8 +120,10 @@ var nombreColores = [
   "DarkSlateGray",
   "Black"
 ];
+var indicadorColor = document.getElementById("indicador-de-color");
 var paleta = document.getElementById("paleta");
 var grillaPixeles = document.getElementById("grilla-pixeles");
+var mousePresionado = false;
 
 // Variable para guardar el elemento 'color-personalizado'
 // Es decir, el que se elige con la rueda de color.
@@ -130,7 +132,7 @@ var colorPersonalizado = document.getElementById("color-personalizado");
 colorPersonalizado.addEventListener("change", function() {
   // Se guarda el color de la rueda en colorActual
   colorActual = colorPersonalizado.value;
-  // Completar para que cambie el indicador-de-color al colorActual
+  indicadorColor.style.backgroundColor = colorActual;
 });
 
 var crearPaleta = function() {
@@ -154,7 +156,6 @@ crearGrilla();
 
 var cambiarColorElegido = function(e) {
   var nuevoColor = e.target.style.backgroundColor;
-  var indicadorColor = document.getElementById("indicador-de-color");
   indicadorColor.style.backgroundColor = nuevoColor;
   console.log(nuevoColor);
 };
@@ -165,5 +166,27 @@ var pintarGrilla = function(e) {
   e.target.style.backgroundColor = colorSeleccionado;
 };
 
+var pintarGrillaHover = function(e) {
+  if (mousePresionado) {
+    pintarGrilla(e);
+  }
+};
+
 paleta.addEventListener("click", cambiarColorElegido);
-grillaPixeles.addEventListener("click", pintarGrilla);
+
+grillaPixeles.addEventListener("mousedown", pintarGrilla);
+
+grillaPixeles.addEventListener("mousedown", function() {
+  mousePresionado = true;
+});
+window.addEventListener("mouseup", function() {
+  mousePresionado = false;
+});
+
+grillaPixeles.addEventListener("mouseover", pintarGrillaHover);
+
+// Cosas que quiero pregunta
+// >Pintar en hover desde donde empiezo.  RTA: poner mousedown en lugar de click
+// >Por que funciona hacer el eventListener el en el nuevoDiv
+// >Que onda la rueda de color
+// >Por qué no me pinta bien de corrido'

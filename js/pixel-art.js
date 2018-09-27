@@ -182,11 +182,4 @@ grillaPixeles.addEventListener("mousedown", function() {
 window.addEventListener("mouseup", function() {
   mousePresionado = false;
 });
-
 grillaPixeles.addEventListener("mouseover", pintarGrillaHover);
-
-// Cosas que quiero pregunta
-// >Pintar en hover desde donde empiezo.  RTA: poner mousedown en lugar de click
-// >Por que funciona hacer el eventListener el en el nuevoDiv
-// >Que onda la rueda de color
-// >Por qué no me pinta bien de corrido'

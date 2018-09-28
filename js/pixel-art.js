@@ -172,6 +172,33 @@ var pintarGrillaHover = function(e) {
   }
 };
 
+// REVISAR ESTO PORQUE EL ANIMATE NO ME CIERRA
+
+$("#borrar").click(function() {
+  $("#grilla-pixeles div").animate({ backgroundColor: "white" }, 3000);
+});
+
+$("img").click(function() {
+  console.log(this.id);
+  var elegido = this.id;
+  switch (elegido) {
+    case "batman":
+      cargarSuperheroe(batman);
+      break;
+    case "flash":
+      cargarSuperheroe(flash);
+      break;
+    case "wonder":
+      cargarSuperheroe(wonder);
+      break;
+    case "invisible":
+      cargarSuperheroe(invisible);
+      break;
+  }
+});
+
+$("#guardar").click(guardarPixelArt);
+
 paleta.addEventListener("click", cambiarColorElegido);
 
 grillaPixeles.addEventListener("mousedown", pintarGrilla);

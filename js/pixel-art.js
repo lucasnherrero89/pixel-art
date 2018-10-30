@@ -172,10 +172,8 @@ var pintarGrillaHover = function(e) {
   }
 };
 
-// REVISAR ESTO PORQUE EL ANIMATE NO ME CIERRA
-
 $("#borrar").click(function() {
-  $("#grilla-pixeles div").animate({ backgroundColor: "white" }, 3000);
+  $("#grilla-pixeles div").animate({ backgroundColor: "white" }, 2500);
 });
 
 $("img").click(function() {

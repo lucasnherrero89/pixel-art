@@ -1,9 +1,8 @@
 // No modifiques estas funciones a menos que sepas MUY BIEN lo que estas haciendo!
 
-
 // Abre una ventana para guardar nuestro arte en un archivo pixel-art.png
 function guardarPixelArt() {
-  html2canvas($("#grilla-pixeles") , {
+  html2canvas($("#grilla-pixeles"), {
     onrendered: function(canvas) {
       theCanvas = canvas;
       canvas.toBlob(function(blob) {
